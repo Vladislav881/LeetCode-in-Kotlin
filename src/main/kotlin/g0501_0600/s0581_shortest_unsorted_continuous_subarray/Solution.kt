@@ -5,23 +5,22 @@ package g0501_0600.s0581_shortest_unsorted_continuous_subarray
 
 class Solution {
     fun findUnsortedSubarray(nums: IntArray): Int {
-        fun findUnsortedSubarray(nums: IntArray): Int {
-            var end = -2
-            var max = Int.MIN_VALUE
-            var start = -1
-            var min = Int.MAX_VALUE
-            val lengg = nums.size - 1
+        var end = -2
+        var max = Int.MIN_VALUE
+        var start = -1
+        var min = Int.MAX_VALUE
+        val lengg = nums.size - 1
 
-            for(i in nums.indices){
-                max = Math.max(max, nums[i])
-                min = Math.min(min, nums[lengg - i])
-                if (nums[i] < max){
-                    end = i
-                }
-                if (nums[lengg - i] > min){
-                    start = lengg - i
-                }
+        for(i in nums.indices){
+            max = Math.max(max, nums[i])
+            min = Math.min(min, nums[lengg - i])
+            if (nums[i] < max){
+                end = i
             }
-            return end - start + 1
+            if (nums[lengg - i] > min){
+                start = lengg - i
+            }
         }
+        return end - start + 1
+    }
 }
